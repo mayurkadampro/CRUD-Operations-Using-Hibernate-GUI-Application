@@ -111,16 +111,17 @@ class AddScreen extends JFrame
 		
 		ActionListener a1 = (ae) -> {
 			
-			String gender = "";
-			int age = Integer.parseInt(ageField.getText());
+			String gender = "empty";
+			//int age = Integer.parseInt(ageField.getText());
 			if(maleRadio.isSelected()){
 				gender = maleRadio.getText();
-			}else if(femaleRadio.isSelected()){
+			}
+			if(femaleRadio.isSelected()){
 				gender = femaleRadio.getText();
 			}
 			
 			
-			if(nameField.getText().isEmpty() || rollField.getText().isEmpty() || ageField.getText().isEmpty() || gender.equals("")){
+			if(nameField.getText().isEmpty() || rollField.getText().isEmpty() || ageField.getText().isEmpty() || gender.equals("empty")){
 				JOptionPane.showMessageDialog(c,"Please Enter Value in Black Field");
 			}else if(nameField.getText().matches("[0-9]+")){
 				JOptionPane.showMessageDialog(c,"Name should not contain any numbers");
@@ -130,7 +131,7 @@ class AddScreen extends JFrame
 				JOptionPane.showMessageDialog(c,"Please enter numbers in rollno field");
 			}else if(ageField.getText().matches("[0-9]+") == false){
 				JOptionPane.showMessageDialog(c,"Please enter numbers in age field");
-			}else if(age > 45){
+			}else if((Integer.parseInt(ageField.getText())) >= 45){
 				JOptionPane.showMessageDialog(c,"Student age must be less than 46");
 			}else{
 					Configuration cfg = new Configuration();
