@@ -47,6 +47,7 @@ class ViewScreen extends JFrame{
 			System.out.println(e);
 		}finally{
 			session.close();
+			sfact.close();
 		}
 
 		

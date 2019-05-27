@@ -77,7 +77,7 @@ class MainScreen extends JFrame{
 		upBtn.addActionListener(a1);
 		
 		ActionListener a2 = (ae) -> { 
-			UpdateScreen as = new UpdateScreen();
+			DeleteScreen as = new DeleteScreen();
 			this.dispose();
 		};
 		delBtn.addActionListener(a2);

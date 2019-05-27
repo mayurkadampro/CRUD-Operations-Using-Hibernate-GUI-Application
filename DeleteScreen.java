@@ -3,26 +3,26 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.border.*;
 import javax.swing.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
 
 class DeleteScreen extends JFrame{
 	Container c;
 	String column[] = {"    ","name","rollno","age","gender"};
 	JLabel choiceLabel;
-	JLabel newvalueLabel;
 	JLabel oldvalueLabel;
-	JTextField oldvalueField;
-	JTextField newvalueField;
+	static JTextField oldvalueField;
 	JLabel emptyLabel;
-	JLabel emptyOneLabel;
 	JLabel emptyTwoLabel;
 	JLabel emptyThreeLabel;
-	JComboBox cb;
+	static JComboBox cb;
 	JButton delBtn,backBtn;
 	Border empty,white;
 	
 	
 	
 	DeleteScreen(){
+
 		c = getContentPane();
 		c.setLayout(new FlowLayout(FlowLayout.LEFT));
 		
@@ -37,17 +37,9 @@ class DeleteScreen extends JFrame{
 		oldvalueField = new JTextField();
 		oldvalueField.setPreferredSize( new Dimension( 250, 24 ));
 		
-		newvalueLabel = new JLabel("New Value : ");
-		newvalueLabel.setFont(new Font("Arial", Font.BOLD, 19));
-		
-		newvalueField = new JTextField();
-		newvalueField.setPreferredSize( new Dimension( 250, 24 ));
-		
 		emptyLabel = new JLabel("                                                                                                                                          ");
 		emptyLabel.setFont(new Font("Arial", Font.BOLD, 7));
 		
-		emptyOneLabel = new JLabel("                                                                                                                                                                                ");
-		emptyOneLabel.setFont(new Font("Arial", Font.BOLD, 7));
 		
 		emptyTwoLabel = new JLabel("                                                                                                                                                                                ");
 		emptyTwoLabel.setFont(new Font("Arial", Font.BOLD, 7));
@@ -79,9 +71,6 @@ class DeleteScreen extends JFrame{
 		c.add(oldvalueLabel);
 		c.add(oldvalueField);
 		c.add(emptyTwoLabel);
-		c.add(newvalueLabel);
-		c.add(newvalueField);
-		c.add(emptyOneLabel);
 		c.add(delBtn);
 		c.add(backBtn);
 		
@@ -93,6 +82,53 @@ class DeleteScreen extends JFrame{
 		
 		backBtn.addActionListener(a);
 		
+		ActionListener a1 = (ae) -> {
+			
+			String col = "";
+			
+			if(cb.getSelectedItem().toString() == column[0]){
+				JOptionPane.showMessageDialog(c,"Please select column ");
+			}else if(cb.getSelectedItem().toString() == column[1] 
+			|| cb.getSelectedItem().toString() == column[2] 
+			|| cb.getSelectedItem().toString() == column[3]
+			|| cb.getSelectedItem().toString() == column[4])
+			{
+				col = cb.getSelectedItem().toString();
+				if(oldvalueField.getText().isEmpty()){
+					JOptionPane.showMessageDialog(c,"Please Enter Value in Black Field");
+				}else if(col.equals(column[1])){
+					if(oldvalueField.getText().matches("[0-9]+") == false){
+							dataDelete(oldvalueField.getText(),col);
+					}else{
+						JOptionPane.showMessageDialog(c,"Please enter string value");
+					}
+				}else if(col.equals(column[2])){
+					if(oldvalueField.getText().matches("[0-9]+") == true){
+						dataDelete(Integer.parseInt(oldvalueField.getText()),col);
+					}else{
+						JOptionPane.showMessageDialog(c,"Please enter numerical value");
+					}
+				}else if(col.equals(column[3])){
+					if(oldvalueField.getText().matches("[0-9]+") == true){
+						dataDelete(Integer.parseInt(oldvalueField.getText()),col);
+					}else{
+						JOptionPane.showMessageDialog(c,"Please enter numerical value");
+					}
+				}else if(col.equals(column[4])){
+					if(oldvalueField.getText().matches("[0-9]+") == false){
+						dataDelete(oldvalueField.getText(),col);
+					}else{
+						JOptionPane.showMessageDialog(c,"Please enter string value");
+					}
+				}
+				
+				
+			}
+			
+		};
+		
+		delBtn.addActionListener(a1);
+		
 		// JFrame Basic Settings
 		c.setBackground(Color.yellow);
 		setTitle("S.M.S");
@@ -103,4 +139,31 @@ class DeleteScreen extends JFrame{
 		setVisible(true);
 		
 	}
+	
+	public static void dataDelete(Object oldValue,String colName){
+		Configuration cfg = new Configuration();
+		cfg.configure("hibernate.cfg.xml");
+		SessionFactory sfact = cfg.buildSessionFactory();
+		Session session = sfact.openSession();
+		
+		try{
+			System.out.println("begin");
+			Query qry = session.createQuery("delete from Student where "+colName+"=:java4s");
+			qry.setParameter("java4s",oldValue);
+			int res = qry.executeUpdate();
+			System.out.println("end");
+			
+			JOptionPane.showMessageDialog(new JFrame(),"Numer of records effected due to delete query "+res);
+			cb.setSelectedIndex(0);
+			oldvalueField.setText("");
+			
+		}catch(Exception e){
+			System.out.println(e);
+		}finally{
+			session.close();
+			sfact.close();
+		}
+	}
+	
+	
 }

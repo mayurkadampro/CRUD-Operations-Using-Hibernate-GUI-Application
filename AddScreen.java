@@ -125,13 +125,13 @@ class AddScreen extends JFrame
 				JOptionPane.showMessageDialog(c,"Please Enter Value in Black Field");
 			}else if(nameField.getText().matches("[0-9]+")){
 				JOptionPane.showMessageDialog(c,"Name should not contain any numbers");
-			}else if(nameField.getText().length() <= 2){
-				JOptionPane.showMessageDialog(c,"Name should be greater than 2 letter");
+			}else if(nameField.getText().length() <= 3){
+				JOptionPane.showMessageDialog(c,"Name should be greater than 3 letter");
 			}else if(rollField.getText().matches("[0-9]+") == false){
 				JOptionPane.showMessageDialog(c,"Please enter numbers in rollno field");
 			}else if(ageField.getText().matches("[0-9]+") == false){
 				JOptionPane.showMessageDialog(c,"Please enter numbers in age field");
-			}else if((myage = Integer.parseInt(ageField.getText())) >= 45){
+			}else if((myage = Integer.parseInt(ageField.getText())) > 45){
 				JOptionPane.showMessageDialog(c,"Student age must be less than 46");
 			}else{
 					Configuration cfg = new Configuration();
@@ -152,11 +152,18 @@ class AddScreen extends JFrame
 						System.out.println("Record Inserted...");
 						System.out.println("end");
 						JOptionPane.showMessageDialog(c,"Data Saved Successfully...");
+						
+						nameField.setText("");
+						rollField.setText("");
+						ageField.setText("");
+						group.clearSelection();
+						
 					}catch(Exception e){
 						if (t!=null) t.rollback();
 					}finally{
 						session.flush();
 						session.close();
+						sfact.close();
 					}
 			}
 		};
