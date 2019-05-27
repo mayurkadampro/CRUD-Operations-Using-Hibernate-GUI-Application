@@ -136,22 +136,30 @@ class UpdateScreen extends JFrame{
 							if(colOne.equals(column[1])){
 								if(oldvalueField.getText().matches("[0-9]+") == false){
 									dataUpdate(oldvalueField.getText(),newvalueField.getText(),col,colOne);
+								}else{
+									JOptionPane.showMessageDialog(c,"Please enter string value In Old Value Field");
 								}
 							}else if(colOne.equals(column[2])){
 								if(oldvalueField.getText().matches("[0-9]+") == true){
 									dataUpdate(Integer.parseInt(oldvalueField.getText()),newvalueField.getText(),col,colOne);
+								}else{
+									JOptionPane.showMessageDialog(c,"Please enter numerical value In Old Value Field");
 								}
 							}else if(colOne.equals(column[3])){
 								if(oldvalueField.getText().matches("[0-9]+") == true){
 									dataUpdate(Integer.parseInt(oldvalueField.getText()),newvalueField.getText(),col,colOne);
+								}else{
+									JOptionPane.showMessageDialog(c,"Please enter numerical value In Old Value Field");
 								}
 							}else if(colOne.equals(column[4])){
 								if(oldvalueField.getText().matches("[0-9]+") == false){
 									dataUpdate(oldvalueField.getText(),newvalueField.getText(),col,colOne);
+								}else{
+									JOptionPane.showMessageDialog(c,"Please enter string value In Old Value Field");
 								}
 							}		
 					}else{
-						JOptionPane.showMessageDialog(c,"Please enter string value");
+						JOptionPane.showMessageDialog(c,"Please enter string value In New Value Field");
 					}
 				}else if(col.equals(column[2])){
 					
@@ -159,66 +167,90 @@ class UpdateScreen extends JFrame{
 						if(colOne.equals(column[1])){
 								if(oldvalueField.getText().matches("[0-9]+") == false){
 									dataUpdate(oldvalueField.getText(),Integer.parseInt(newvalueField.getText()),col,colOne);
+								}else{
+									JOptionPane.showMessageDialog(c,"Please enter string value In Old Value Field");
 								}
 							}else if(colOne.equals(column[2])){
 								if(oldvalueField.getText().matches("[0-9]+") == true){
 									dataUpdate(Integer.parseInt(oldvalueField.getText()),Integer.parseInt(newvalueField.getText()),col,colOne);
+								}else{
+									JOptionPane.showMessageDialog(c,"Please enter numerical value In Old Value Field");
 								}
 							}else if(colOne.equals(column[3])){
 								if(oldvalueField.getText().matches("[0-9]+") == true){
 									dataUpdate(Integer.parseInt(oldvalueField.getText()),Integer.parseInt(newvalueField.getText()),col,colOne);
+								}else{
+									JOptionPane.showMessageDialog(c,"Please enter numerical value In Old Value Field");
 								}
 							}else if(colOne.equals(column[4])){
 								if(oldvalueField.getText().matches("[0-9]+") == false){
 									dataUpdate(oldvalueField.getText(),Integer.parseInt(newvalueField.getText()),col,colOne);
+								}else{
+									JOptionPane.showMessageDialog(c,"Please enter string value In Old Value Field");
 								}
 							}
 					}else{
-						JOptionPane.showMessageDialog(c,"Please enter numerical value");
+						JOptionPane.showMessageDialog(c,"Please enter numerical value In New Value Field");
 					}
 				}else if(col.equals(column[3])){
 					if(newvalueField.getText().matches("[0-9]+") == true){
 						if(colOne.equals(column[1])){
 								if(oldvalueField.getText().matches("[0-9]+") == false){
 									dataUpdate(oldvalueField.getText(),Integer.parseInt(newvalueField.getText()),col,colOne);
+								}else{
+									JOptionPane.showMessageDialog(c,"Please enter string value In Old Value Field");
 								}
 						}else if(colOne.equals(column[2])){
 								if(oldvalueField.getText().matches("[0-9]+") == true){
 									dataUpdate(Integer.parseInt(oldvalueField.getText()),Integer.parseInt(newvalueField.getText()),col,colOne);
+								}else{
+									JOptionPane.showMessageDialog(c,"Please enter numerical value In Old Value Field");
 								}
 						}else if(colOne.equals(column[3])){
 								if(oldvalueField.getText().matches("[0-9]+") == true){
 									dataUpdate(Integer.parseInt(oldvalueField.getText()),Integer.parseInt(newvalueField.getText()),col,colOne);
+								}else{
+									JOptionPane.showMessageDialog(c,"Please enter numerical value In Old Value Field");
 								}
 						}else if(colOne.equals(column[4])){
 								if(oldvalueField.getText().matches("[0-9]+") == false){
 									dataUpdate(oldvalueField.getText(),Integer.parseInt(newvalueField.getText()),col,colOne);
+								}else{
+									JOptionPane.showMessageDialog(c,"Please enter string value In Old Value Field");
 								}
 						}
 					}else{
-						JOptionPane.showMessageDialog(c,"Please enter numerical value");
+						JOptionPane.showMessageDialog(c,"Please enter numerical value In New Value Field");
 					}
 				}else if(col.equals(column[4])){
 					if(newvalueField.getText().matches("[0-9]+") == false){
 						if(colOne.equals(column[1])){
 								if(oldvalueField.getText().matches("[0-9]+") == false){
 									dataUpdate(oldvalueField.getText(),newvalueField.getText(),col,colOne);
+								}else{
+									JOptionPane.showMessageDialog(c,"Please enter string value In Old Value Field");
 								}
 							}else if(colOne.equals(column[2])){
 								if(oldvalueField.getText().matches("[0-9]+") == true){
 									dataUpdate(Integer.parseInt(oldvalueField.getText()),newvalueField.getText(),col,colOne);
+								}else{
+									JOptionPane.showMessageDialog(c,"Please enter numerical value In Old Value Field");
 								}
 							}else if(colOne.equals(column[3])){
 								if(oldvalueField.getText().matches("[0-9]+") == true){
 									dataUpdate(Integer.parseInt(oldvalueField.getText()),newvalueField.getText(),col,colOne);
+								}else{
+									JOptionPane.showMessageDialog(c,"Please enter numerical value In Old Value Field");
 								}
 							}else if(colOne.equals(column[4])){
 								if(oldvalueField.getText().matches("[0-9]+") == false){
 									dataUpdate(oldvalueField.getText(),newvalueField.getText(),col,colOne);
+								}else{
+									JOptionPane.showMessageDialog(c,"Please enter string value In Old Value Field");
 								}
 							}
 					}else{
-						JOptionPane.showMessageDialog(c,"Please enter string value");
+						JOptionPane.showMessageDialog(c,"Please enter string value In New Value Field");
 					}
 				}
 				
