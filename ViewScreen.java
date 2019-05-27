@@ -11,11 +11,7 @@ import java.util.List;
 class ViewScreen extends JFrame{
 	Container c;
 	String column[] = {"name","rollno","age","gender"};
-	Object[][] data = new Object[][] {
-            {"Mayur", 1, 23, "Male" },
-            {"Rahul",2, 22, "Male" },
-            {"Zorro",3, 60, "Female" },
-        };
+	Object[][] data;
 	JTable valTable;
 	JButton backBtn;
 	Border empty,white;
@@ -33,8 +29,12 @@ class ViewScreen extends JFrame{
 			System.out.println("begin");
 			List<Student> stu = new ArrayList<>();
 			stu = session.createQuery("from Student").list();
+			data = new Object[stu.size()][];
+			int i = 0;
 			for(Student s: stu){
-				System.out.println(s.getRno()+"  "+s.getName());
+				data[i] = new Object[]{ s.getName(), s.getRno(), s.getAge(), s.getGender()};
+				i++;
+				//System.out.println(s.getRno()+"  "+s.getName());
 			}
 			/*
 			for(int i=0; i<stu.size(); i++){

@@ -110,13 +110,28 @@ class AddScreen extends JFrame
 		backBtn.addActionListener(a);
 		
 		ActionListener a1 = (ae) -> {
-			String empty = new String();
-			String name = nameField.getText();
-			String rollNo = rollField.getText();
-			String age = ageField.getText();
-			//String gender = maleRadio.getText();
-			if(name.equals(empty) || rollNo.equals(empty) || age.equals(empty)){
+			
+			String gender = "";
+			int age = Integer.parseInt(ageField.getText());
+			if(maleRadio.isSelected()){
+				gender = maleRadio.getText();
+			}else if(femaleRadio.isSelected()){
+				gender = femaleRadio.getText();
+			}
+			
+			
+			if(nameField.getText().isEmpty() || rollField.getText().isEmpty() || ageField.getText().isEmpty() || gender.equals("")){
 				JOptionPane.showMessageDialog(c,"Please Enter Value in Black Field");
+			}else if(nameField.getText().matches("[0-9]+")){
+				JOptionPane.showMessageDialog(c,"Name should not contain any numbers");
+			}else if(nameField.getText().length() <= 2){
+				JOptionPane.showMessageDialog(c,"Name should be greater than 2 letter");
+			}else if(rollField.getText().matches("[0-9]+") == false){
+				JOptionPane.showMessageDialog(c,"Please enter numbers in rollno field");
+			}else if(ageField.getText().matches("[0-9]+") == false){
+				JOptionPane.showMessageDialog(c,"Please enter numbers in age field");
+			}else if(age > 45){
+				JOptionPane.showMessageDialog(c,"Student age must be less than 46");
 			}else{
 					Configuration cfg = new Configuration();
 					cfg.configure("hibernate.cfg.xml");
@@ -127,10 +142,10 @@ class AddScreen extends JFrame
 						System.out.println("begin");
 						t = session.beginTransaction();
 						Student stud = new Student();
-						stud.setName(name);
-						stud.setRno(Integer.parseInt(rollNo));
-						stud.setAge(Integer.parseInt(age));
-						stud.setGender("male");
+						stud.setName(nameField.getText());
+						stud.setRno(Integer.parseInt(rollField.getText()));
+						stud.setAge(Integer.parseInt(ageField.getText()));
+						stud.setGender(gender);
 						session.save(stud);
 						t.commit();
 						System.out.println("Record Inserted...");
