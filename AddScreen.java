@@ -112,7 +112,7 @@ class AddScreen extends JFrame
 		ActionListener a1 = (ae) -> {
 			
 			String gender = "empty";
-			//int age = Integer.parseInt(ageField.getText());
+			int myage;
 			if(maleRadio.isSelected()){
 				gender = maleRadio.getText();
 			}
@@ -131,7 +131,7 @@ class AddScreen extends JFrame
 				JOptionPane.showMessageDialog(c,"Please enter numbers in rollno field");
 			}else if(ageField.getText().matches("[0-9]+") == false){
 				JOptionPane.showMessageDialog(c,"Please enter numbers in age field");
-			}else if((Integer.parseInt(ageField.getText())) >= 45){
+			}else if((myage = Integer.parseInt(ageField.getText())) >= 45){
 				JOptionPane.showMessageDialog(c,"Student age must be less than 46");
 			}else{
 					Configuration cfg = new Configuration();
@@ -145,7 +145,7 @@ class AddScreen extends JFrame
 						Student stud = new Student();
 						stud.setName(nameField.getText());
 						stud.setRno(Integer.parseInt(rollField.getText()));
-						stud.setAge(Integer.parseInt(ageField.getText()));
+						stud.setAge(myage);
 						stud.setGender(gender);
 						session.save(stud);
 						t.commit();
