@@ -139,11 +139,11 @@ class UpdateScreen extends JFrame{
 								}
 							}else if(colOne.equals(column[2])){
 								if(oldvalueField.getText().matches("[0-9]+") == true){
-									dataUpdate(Integer.parseInt(oldvalueField.getText()),Integer.parseInt(newvalueField.getText()),col,colOne);
+									dataUpdate(Integer.parseInt(oldvalueField.getText()),newvalueField.getText(),col,colOne);
 								}
 							}else if(colOne.equals(column[3])){
 								if(oldvalueField.getText().matches("[0-9]+") == true){
-									dataUpdate(Integer.parseInt(oldvalueField.getText()),Integer.parseInt(newvalueField.getText()),col,colOne);
+									dataUpdate(Integer.parseInt(oldvalueField.getText()),newvalueField.getText(),col,colOne);
 								}
 							}else if(colOne.equals(column[4])){
 								if(oldvalueField.getText().matches("[0-9]+") == false){
@@ -206,11 +206,11 @@ class UpdateScreen extends JFrame{
 								}
 							}else if(colOne.equals(column[2])){
 								if(oldvalueField.getText().matches("[0-9]+") == true){
-									dataUpdate(Integer.parseInt(oldvalueField.getText()),Integer.parseInt(newvalueField.getText()),col,colOne);
+									dataUpdate(Integer.parseInt(oldvalueField.getText()),newvalueField.getText(),col,colOne);
 								}
 							}else if(colOne.equals(column[3])){
 								if(oldvalueField.getText().matches("[0-9]+") == true){
-									dataUpdate(Integer.parseInt(oldvalueField.getText()),Integer.parseInt(newvalueField.getText()),col,colOne);
+									dataUpdate(Integer.parseInt(oldvalueField.getText()),newvalueField.getText(),col,colOne);
 								}
 							}else if(colOne.equals(column[4])){
 								if(oldvalueField.getText().matches("[0-9]+") == false){
