@@ -9,12 +9,12 @@ import javax.swing.*;
 import java.util.List;
 
 class ViewScreen extends JFrame{
-	Container c;
-	String column[] = {"name","rollno","age","gender"};
-	Object[][] data;
-	JTable valTable;
-	JButton backBtn;
-	Border empty,white;
+	private Container c;
+	private String column[] = {"name","rollno","age","gender"};
+	private Object[][] data;
+	private JTable valTable;
+	private JButton backBtn;
+	private Border empty,white;
 	
 	ViewScreen(){
 		c = getContentPane();

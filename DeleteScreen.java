@@ -7,17 +7,17 @@ import org.hibernate.*;
 import org.hibernate.cfg.*;
 
 class DeleteScreen extends JFrame{
-	Container c;
-	String column[] = {"    ","name","rollno","age","gender"};
-	JLabel choiceLabel;
-	JLabel oldvalueLabel;
-	static JTextField oldvalueField;
-	JLabel emptyLabel;
-	JLabel emptyTwoLabel;
-	JLabel emptyThreeLabel;
-	static JComboBox cb;
-	JButton delBtn,backBtn;
-	Border empty,white;
+	private Container c;
+	private String column[] = {"    ","name","rollno","age","gender"};
+	private JLabel choiceLabel;
+	private JLabel oldvalueLabel;
+	private static JTextField oldvalueField;
+	private JLabel emptyLabel;
+	private JLabel emptyTwoLabel;
+	private JLabel emptyThreeLabel;
+	private static JComboBox cb;
+	private JButton delBtn,backBtn;
+	private Border empty,white;
 	
 	
 	

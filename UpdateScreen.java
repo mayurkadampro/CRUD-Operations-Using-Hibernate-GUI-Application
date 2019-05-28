@@ -7,24 +7,24 @@ import org.hibernate.*;
 import org.hibernate.cfg.*;
 
 class UpdateScreen extends JFrame{
-	Container c;
-	String column[] = {"    ","name","rollno","age","gender"};
-	JLabel choiceLabel;
-	JLabel choiceLabelOne;
-	JLabel newvalueLabel;
-	JLabel oldvalueLabel;
-	static JTextField oldvalueField;
-	static JTextField newvalueField;
-	JLabel emptyLabel;
-	JLabel emptyFourLabel;
-	JLabel emptyOneLabel;
-	JLabel emptyTwoLabel;
-	JLabel emptyThreeLabel;
-	static JComboBox cb;
-	static JComboBox cbOne;
-	JButton upBtn,backBtn;
-	Border empty,white;
-	int myage;
+	private Container c;
+	private String column[] = {"    ","name","rollno","age","gender"};
+	private JLabel choiceLabel;
+	private JLabel choiceLabelOne;
+	private JLabel newvalueLabel;
+	private JLabel oldvalueLabel;
+	private static JTextField oldvalueField;
+	private static JTextField newvalueField;
+	private JLabel emptyLabel;
+	private JLabel emptyFourLabel;
+	private JLabel emptyOneLabel;
+	private JLabel emptyTwoLabel;
+	private JLabel emptyThreeLabel;
+	private static JComboBox cb;
+	private static JComboBox cbOne;
+	private JButton upBtn,backBtn;
+	private Border empty,white;
+	private int myage;
 	
 	
 	

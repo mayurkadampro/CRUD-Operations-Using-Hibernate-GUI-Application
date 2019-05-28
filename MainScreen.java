@@ -7,12 +7,12 @@ import java.awt.*;
 
 class MainScreen extends JFrame{
 	
-	Container c;
-	JButton addBtn;
-	JButton delBtn;
-	JButton viewBtn;
-	JButton upBtn;
-	Border empty,white;
+	private Container c;
+	private JButton addBtn;
+	private JButton delBtn;
+	private JButton viewBtn;
+	private JButton upBtn;
+	private Border empty,white;
 	
 	
 	 MainScreen(){

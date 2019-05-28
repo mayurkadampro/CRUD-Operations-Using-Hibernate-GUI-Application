@@ -9,23 +9,23 @@ import org.hibernate.cfg.*;
 
 class AddScreen extends JFrame
 {
-	Container c;
-	JLabel nameLabel;
-	JLabel nameemptyLabel;
-	JLabel rollLabel;
-	JLabel rollemptyLabel;
-	JLabel ageLabel;
-	JLabel ageemptyLabel;
-	JLabel genderLabel;
-	JLabel genderemptyLabel;
-	JTextField nameField;
-	JTextField rollField;
-	JTextField ageField;
-	JRadioButton maleRadio;
-	JRadioButton femaleRadio;
-	JButton subBtn;
-	JButton backBtn;
-	Border empty,white;
+	private Container c;
+	private JLabel nameLabel;
+	private JLabel nameemptyLabel;
+	private JLabel rollLabel;
+	private JLabel rollemptyLabel;
+	private JLabel ageLabel;
+	private JLabel ageemptyLabel;
+	private JLabel genderLabel;
+	private JLabel genderemptyLabel;
+	private JTextField nameField;
+	private JTextField rollField;
+	private JTextField ageField;
+	private JRadioButton maleRadio;
+	private JRadioButton femaleRadio;
+	private JButton subBtn;
+	private JButton backBtn;
+	private Border empty,white;
 	
 	
 	AddScreen(){
