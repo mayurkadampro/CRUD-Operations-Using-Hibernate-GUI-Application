@@ -24,6 +24,7 @@ class UpdateScreen extends JFrame{
 	static JComboBox cbOne;
 	JButton upBtn,backBtn;
 	Border empty,white;
+	int myage;
 	
 	
 	
@@ -131,8 +132,8 @@ class UpdateScreen extends JFrame{
 				if(oldvalueField.getText().isEmpty() || newvalueField.getText().isEmpty()){
 					JOptionPane.showMessageDialog(c,"Please Enter Value in Black Field");
 				}else if(col.equals(column[1])){
-					
 					if(newvalueField.getText().matches("[0-9]+") == false){
+						if(newvalueField.getText().length() > 2){
 							if(colOne.equals(column[1])){
 								if(oldvalueField.getText().matches("[0-9]+") == false){
 									dataUpdate(oldvalueField.getText(),newvalueField.getText(),col,colOne);
@@ -157,7 +158,10 @@ class UpdateScreen extends JFrame{
 								}else{
 									JOptionPane.showMessageDialog(c,"Please enter string value In Old Value Field");
 								}
-							}		
+							}
+						}else{
+							JOptionPane.showMessageDialog(c,"Name should be greater than 2 letter");
+						}							
 					}else{
 						JOptionPane.showMessageDialog(c,"Please enter string value In New Value Field");
 					}
@@ -194,6 +198,7 @@ class UpdateScreen extends JFrame{
 					}
 				}else if(col.equals(column[3])){
 					if(newvalueField.getText().matches("[0-9]+") == true){
+						if((myage = Integer.parseInt(newvalueField.getText())) <= 45){
 						if(colOne.equals(column[1])){
 								if(oldvalueField.getText().matches("[0-9]+") == false){
 									dataUpdate(oldvalueField.getText(),Integer.parseInt(newvalueField.getText()),col,colOne);
@@ -219,11 +224,15 @@ class UpdateScreen extends JFrame{
 									JOptionPane.showMessageDialog(c,"Please enter string value In Old Value Field");
 								}
 						}
+						}else{
+							JOptionPane.showMessageDialog(c,"Student age must be less than 46");
+						}
 					}else{
 						JOptionPane.showMessageDialog(c,"Please enter numerical value In New Value Field");
 					}
 				}else if(col.equals(column[4])){
 					if(newvalueField.getText().matches("[0-9]+") == false){
+						if(newvalueField.getText().equals("male") || newvalueField.getText().equals("female")){
 						if(colOne.equals(column[1])){
 								if(oldvalueField.getText().matches("[0-9]+") == false){
 									dataUpdate(oldvalueField.getText(),newvalueField.getText(),col,colOne);
@@ -249,6 +258,9 @@ class UpdateScreen extends JFrame{
 									JOptionPane.showMessageDialog(c,"Please enter string value In Old Value Field");
 								}
 							}
+						}else{
+							JOptionPane.showMessageDialog(c,"enter male or female in new value field");
+						}
 					}else{
 						JOptionPane.showMessageDialog(c,"Please enter string value In New Value Field");
 					}
@@ -286,7 +298,12 @@ class UpdateScreen extends JFrame{
 			int res = qry.executeUpdate();
 			System.out.println("end");
 			
-			JOptionPane.showMessageDialog(new JFrame(),"Numer of records effected due to delete query "+res);
+			if(res>0){
+				JOptionPane.showMessageDialog(new JFrame(),"Numer of records effected due to delete query "+res);
+			}else{
+				JOptionPane.showMessageDialog(new JFrame(),"No Matching Record Found.");
+			}
+			
 			
 			oldvalueField.setText("");
 			cb.setSelectedIndex(0);

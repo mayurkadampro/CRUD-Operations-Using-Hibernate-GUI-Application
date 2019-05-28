@@ -28,8 +28,6 @@ class AddScreen extends JFrame
 	Border empty,white;
 	
 	
-	
-	
 	AddScreen(){
 		
 		c = getContentPane();
@@ -62,7 +60,7 @@ class AddScreen extends JFrame
 		
 		maleRadio = new JRadioButton("male");
 		maleRadio.setOpaque(false);
-		femaleRadio = new JRadioButton("Female");
+		femaleRadio = new JRadioButton("female");
 		femaleRadio.setOpaque(false);
 		ButtonGroup group = new ButtonGroup();
 		group.add(maleRadio);
@@ -125,8 +123,8 @@ class AddScreen extends JFrame
 				JOptionPane.showMessageDialog(c,"Please Enter Value in Black Field");
 			}else if(nameField.getText().matches("[0-9]+")){
 				JOptionPane.showMessageDialog(c,"Name should not contain any numbers");
-			}else if(nameField.getText().length() <= 3){
-				JOptionPane.showMessageDialog(c,"Name should be greater than 3 letter");
+			}else if(nameField.getText().length() <= 2){
+				JOptionPane.showMessageDialog(c,"Name should be greater than 2 letter");
 			}else if(rollField.getText().matches("[0-9]+") == false){
 				JOptionPane.showMessageDialog(c,"Please enter numbers in rollno field");
 			}else if(ageField.getText().matches("[0-9]+") == false){
