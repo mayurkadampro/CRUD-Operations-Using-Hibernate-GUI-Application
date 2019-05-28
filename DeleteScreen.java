@@ -153,7 +153,12 @@ class DeleteScreen extends JFrame{
 			int res = qry.executeUpdate();
 			System.out.println("end");
 			
-			JOptionPane.showMessageDialog(new JFrame(),"Numer of records effected due to delete query "+res);
+			if(res>0){
+				JOptionPane.showMessageDialog(new JFrame(),"Numer of records effected due to delete query "+res);
+			}else{
+				JOptionPane.showMessageDialog(new JFrame(),"No Matching Record Found");
+			}
+			
 			cb.setSelectedIndex(0);
 			oldvalueField.setText("");
 			

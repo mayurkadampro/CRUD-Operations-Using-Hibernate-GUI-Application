@@ -28,7 +28,7 @@ class ViewScreen extends JFrame{
 		try{
 			System.out.println("begin");
 			List<Student> stu = new ArrayList<>();
-			stu = session.createQuery("from Student").list();
+			stu = session.createQuery("from Student order by id").list();
 			data = new Object[stu.size()][];
 			int i = 0;
 			for(Student s: stu){
@@ -43,19 +43,22 @@ class ViewScreen extends JFrame{
 				}
 			}*/
 			System.out.println("end");
+			
 		}catch(Exception e){
 			System.out.println(e);
 		}finally{
 			session.close();
 			sfact.close();
 		}
-
 		
 		valTable = new JTable(data,column);
         valTable.setPreferredScrollableViewportSize(new Dimension(430,150));
 		valTable.setFillsViewportHeight(true);
 		valTable.setEnabled(false); // for make table uneditable
 		valTable.getTableHeader().setReorderingAllowed(false); // for make table unmovable
+		
+		
+		
 		
 		backBtn = new JButton("Back");
 		backBtn.setBackground(new Color(255, 0, 0));
@@ -82,6 +85,16 @@ class ViewScreen extends JFrame{
 		//setResizable(false);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setVisible(true);
+		
+		if(data.length <= 0){
+			JOptionPane.showMessageDialog(c,"No Record Found. ");
+			MainScreen ms = new MainScreen();
+		}else{
+			setVisible(true);
+		}
+		
+		
+		
+		
 	}
 }
