@@ -8,7 +8,7 @@ import org.hibernate.cfg.*;
 
 class UpdateScreen extends JFrame{
 	private Container c;
-	private String column[] = {"    ","name","rollno","age","gender"};
+	private String column[] = {"    ","name","age","gender"};
 	private JLabel choiceLabel;
 	private JLabel choiceLabelOne;
 	private JLabel newvalueLabel;
@@ -20,7 +20,6 @@ class UpdateScreen extends JFrame{
 	private JLabel emptyOneLabel;
 	private JLabel emptyTwoLabel;
 	private JLabel emptyThreeLabel;
-	private static JComboBox cb;
 	private static JComboBox cbOne;
 	private JButton upBtn,backBtn;
 	private Border empty,white;
@@ -32,29 +31,23 @@ class UpdateScreen extends JFrame{
 		c = getContentPane();
 		c.setLayout(new FlowLayout(FlowLayout.LEFT));
 		
-		choiceLabel = new JLabel("update Student SET : ");
-		choiceLabel.setFont(new Font("Arial", Font.BOLD, 19));
-		
-		cb = new JComboBox(column);
-		cb.setBounds(50, 50,90,20);
-		
-		choiceLabelOne = new JLabel("Where Colunm : ");
+		choiceLabelOne = new JLabel("Select column for update: ");
 		choiceLabelOne.setFont(new Font("Arial", Font.BOLD, 19));
 		
 		cbOne = new JComboBox(column);
 		cbOne.setBounds(50, 50,90,20);
 		
-		oldvalueLabel = new JLabel("Old Value : ");
+		oldvalueLabel = new JLabel("Enter Roll No : ");
 		oldvalueLabel.setFont(new Font("Arial", Font.BOLD, 19));
 		
 		oldvalueField = new JTextField();
 		oldvalueField.setPreferredSize( new Dimension( 250, 24 ));
 		
-		newvalueLabel = new JLabel("New Value : ");
+		newvalueLabel = new JLabel("Enter New value : ");
 		newvalueLabel.setFont(new Font("Arial", Font.BOLD, 19));
 		
 		newvalueField = new JTextField();
-		newvalueField.setPreferredSize( new Dimension( 250, 24 ));
+		newvalueField.setPreferredSize( new Dimension( 230, 24 ));
 		
 		emptyLabel = new JLabel("                                                                                                                                          ");
 		emptyLabel.setFont(new Font("Arial", Font.BOLD, 7));
@@ -85,17 +78,18 @@ class UpdateScreen extends JFrame{
 		backBtn.setFocusPainted(false);
 		backBtn.setPreferredSize(new Dimension(70, 35));
 
-		c.add(choiceLabel);
-		c.add(cb);
 		c.add(emptyLabel);
-		c.add(newvalueLabel);
-		c.add(newvalueField);
-		c.add(emptyOneLabel);
-		c.add(choiceLabelOne);
-		c.add(cbOne);
-		c.add(emptyFourLabel);
 		c.add(oldvalueLabel);
 		c.add(oldvalueField);
+		c.add(emptyFourLabel);
+		c.add(choiceLabelOne);
+		c.add(cbOne);
+		c.add(emptyOneLabel);
+		c.add(newvalueLabel);
+		c.add(newvalueField);
+		
+
+
 		c.add(emptyTwoLabel);
 
 		c.add(upBtn);
@@ -109,160 +103,51 @@ class UpdateScreen extends JFrame{
 		
 		backBtn.addActionListener(a);
 		
+		
 		ActionListener a1 = (ae) -> {
-			
-			String col = "";
+
 			String colOne = "";
 			
-			if(cb.getSelectedItem().toString() == column[0] || cbOne.getSelectedItem().toString() == column[0] ){
-				JOptionPane.showMessageDialog(c,"Please select column ");
-			}else if(cb.getSelectedItem().toString() == column[1] 
-			|| cb.getSelectedItem().toString() == column[2] 
-			|| cb.getSelectedItem().toString() == column[3]
-			|| cb.getSelectedItem().toString() == column[4]
-			|| cbOne.getSelectedItem().toString() == column[1] 
+			if(cbOne.getSelectedItem().toString() == column[0]){
+				JOptionPane.showMessageDialog(c,"Please select column field");
+			}else if(cbOne.getSelectedItem().toString() == column[1] 
 			|| cbOne.getSelectedItem().toString() == column[2] 
-			|| cbOne.getSelectedItem().toString() == column[3]
-			|| cbOne.getSelectedItem().toString() == column[4])
-			{
-				col = cb.getSelectedItem().toString();
+			|| cbOne.getSelectedItem().toString() == column[3]){
 				colOne = cbOne.getSelectedItem().toString();
 				
-				
 				if(oldvalueField.getText().isEmpty() || newvalueField.getText().isEmpty()){
-					JOptionPane.showMessageDialog(c,"Please Enter Value in Black Field");
-				}else if(col.equals(column[1])){
-					if(newvalueField.getText().matches("[0-9]+") == false){
-						if(newvalueField.getText().length() > 2){
-							if(colOne.equals(column[1])){
-								if(oldvalueField.getText().matches("[0-9]+") == false){
-									dataUpdate(oldvalueField.getText(),newvalueField.getText(),col,colOne);
-								}else{
-									JOptionPane.showMessageDialog(c,"Please enter string value In Old Value Field");
-								}
-							}else if(colOne.equals(column[2])){
-								if(oldvalueField.getText().matches("[0-9]+") == true){
-									dataUpdate(Integer.parseInt(oldvalueField.getText()),newvalueField.getText(),col,colOne);
-								}else{
-									JOptionPane.showMessageDialog(c,"Please enter numerical value In Old Value Field");
-								}
-							}else if(colOne.equals(column[3])){
-								if(oldvalueField.getText().matches("[0-9]+") == true){
-									dataUpdate(Integer.parseInt(oldvalueField.getText()),newvalueField.getText(),col,colOne);
-								}else{
-									JOptionPane.showMessageDialog(c,"Please enter numerical value In Old Value Field");
-								}
-							}else if(colOne.equals(column[4])){
-								if(oldvalueField.getText().matches("[0-9]+") == false){
-									dataUpdate(oldvalueField.getText(),newvalueField.getText(),col,colOne);
-								}else{
-									JOptionPane.showMessageDialog(c,"Please enter string value In Old Value Field");
-								}
-							}
+					JOptionPane.showMessageDialog(c,"Please Enter Value in Blank Field");
+				}else if(oldvalueField.getText().matches("[0-9]+") == false){
+					JOptionPane.showMessageDialog(c,"Please enter numerical value in roll no field.");
+				}else{
+					if(colOne.equals(column[1])){
+						if(newvalueField.getText().matches("[0-9]+") == true){
+							JOptionPane.showMessageDialog(c,"Please enter String value in new value field.");
 						}else{
-							JOptionPane.showMessageDialog(c,"Name should be greater than 2 letter");
-						}							
-					}else{
-						JOptionPane.showMessageDialog(c,"Please enter string value In New Value Field");
-					}
-				}else if(col.equals(column[2])){
-					
-					if(newvalueField.getText().matches("[0-9]+") == true){
-						if(colOne.equals(column[1])){
-								if(oldvalueField.getText().matches("[0-9]+") == false){
-									dataUpdate(oldvalueField.getText(),Integer.parseInt(newvalueField.getText()),col,colOne);
-								}else{
-									JOptionPane.showMessageDialog(c,"Please enter string value In Old Value Field");
-								}
-							}else if(colOne.equals(column[2])){
-								if(oldvalueField.getText().matches("[0-9]+") == true){
-									dataUpdate(Integer.parseInt(oldvalueField.getText()),Integer.parseInt(newvalueField.getText()),col,colOne);
-								}else{
-									JOptionPane.showMessageDialog(c,"Please enter numerical value In Old Value Field");
-								}
-							}else if(colOne.equals(column[3])){
-								if(oldvalueField.getText().matches("[0-9]+") == true){
-									dataUpdate(Integer.parseInt(oldvalueField.getText()),Integer.parseInt(newvalueField.getText()),col,colOne);
-								}else{
-									JOptionPane.showMessageDialog(c,"Please enter numerical value In Old Value Field");
-								}
-							}else if(colOne.equals(column[4])){
-								if(oldvalueField.getText().matches("[0-9]+") == false){
-									dataUpdate(oldvalueField.getText(),Integer.parseInt(newvalueField.getText()),col,colOne);
-								}else{
-									JOptionPane.showMessageDialog(c,"Please enter string value In Old Value Field");
-								}
+							if(newvalueField.getText().length() > 2){
+								dataUpdate(Integer.parseInt(oldvalueField.getText()),newvalueField.getText(),colOne);
+							}else{
+								JOptionPane.showMessageDialog(c,"Entered name length should be greater than Two");
 							}
-					}else{
-						JOptionPane.showMessageDialog(c,"Please enter numerical value In New Value Field");
-					}
-				}else if(col.equals(column[3])){
-					if(newvalueField.getText().matches("[0-9]+") == true){
-						if((myage = Integer.parseInt(newvalueField.getText())) <= 45){
-						if(colOne.equals(column[1])){
-								if(oldvalueField.getText().matches("[0-9]+") == false){
-									dataUpdate(oldvalueField.getText(),Integer.parseInt(newvalueField.getText()),col,colOne);
-								}else{
-									JOptionPane.showMessageDialog(c,"Please enter string value In Old Value Field");
-								}
-						}else if(colOne.equals(column[2])){
-								if(oldvalueField.getText().matches("[0-9]+") == true){
-									dataUpdate(Integer.parseInt(oldvalueField.getText()),Integer.parseInt(newvalueField.getText()),col,colOne);
-								}else{
-									JOptionPane.showMessageDialog(c,"Please enter numerical value In Old Value Field");
-								}
-						}else if(colOne.equals(column[3])){
-								if(oldvalueField.getText().matches("[0-9]+") == true){
-									dataUpdate(Integer.parseInt(oldvalueField.getText()),Integer.parseInt(newvalueField.getText()),col,colOne);
-								}else{
-									JOptionPane.showMessageDialog(c,"Please enter numerical value In Old Value Field");
-								}
-						}else if(colOne.equals(column[4])){
-								if(oldvalueField.getText().matches("[0-9]+") == false){
-									dataUpdate(oldvalueField.getText(),Integer.parseInt(newvalueField.getText()),col,colOne);
-								}else{
-									JOptionPane.showMessageDialog(c,"Please enter string value In Old Value Field");
-								}
+							
 						}
+					}else if(colOne.equals(column[2])){
+						if(newvalueField.getText().matches("[0-9]+") == false){
+							JOptionPane.showMessageDialog(c,"Please enter numerical value in new value field.");
 						}else{
-							JOptionPane.showMessageDialog(c,"Student age must be less than 46");
+							dataUpdate(Integer.parseInt(oldvalueField.getText()),Integer.parseInt(newvalueField.getText()),colOne);
 						}
-					}else{
-						JOptionPane.showMessageDialog(c,"Please enter numerical value In New Value Field");
-					}
-				}else if(col.equals(column[4])){
-					if(newvalueField.getText().matches("[0-9]+") == false){
-						if(newvalueField.getText().equals("male") || newvalueField.getText().equals("female")){
-						if(colOne.equals(column[1])){
-								if(oldvalueField.getText().matches("[0-9]+") == false){
-									dataUpdate(oldvalueField.getText(),newvalueField.getText(),col,colOne);
-								}else{
-									JOptionPane.showMessageDialog(c,"Please enter string value In Old Value Field");
-								}
-							}else if(colOne.equals(column[2])){
-								if(oldvalueField.getText().matches("[0-9]+") == true){
-									dataUpdate(Integer.parseInt(oldvalueField.getText()),newvalueField.getText(),col,colOne);
-								}else{
-									JOptionPane.showMessageDialog(c,"Please enter numerical value In Old Value Field");
-								}
-							}else if(colOne.equals(column[3])){
-								if(oldvalueField.getText().matches("[0-9]+") == true){
-									dataUpdate(Integer.parseInt(oldvalueField.getText()),newvalueField.getText(),col,colOne);
-								}else{
-									JOptionPane.showMessageDialog(c,"Please enter numerical value In Old Value Field");
-								}
-							}else if(colOne.equals(column[4])){
-								if(oldvalueField.getText().matches("[0-9]+") == false){
-									dataUpdate(oldvalueField.getText(),newvalueField.getText(),col,colOne);
-								}else{
-									JOptionPane.showMessageDialog(c,"Please enter string value In Old Value Field");
-								}
+					}else if(colOne.equals(column[3])){
+						if(newvalueField.getText().matches("[0-9]+") == true){
+							JOptionPane.showMessageDialog(c,"Please enter String value in new value field.");
+						}else{
+							if(newvalueField.getText().equals("male") || newvalueField.getText().equals("female")){
+								dataUpdate(Integer.parseInt(oldvalueField.getText()),newvalueField.getText(),colOne);
+							}else{
+								JOptionPane.showMessageDialog(c,"enter male or female in new value field");
 							}
-						}else{
-							JOptionPane.showMessageDialog(c,"enter male or female in new value field");
+							
 						}
-					}else{
-						JOptionPane.showMessageDialog(c,"Please enter string value In New Value Field");
 					}
 				}
 				
@@ -284,7 +169,7 @@ class UpdateScreen extends JFrame{
 		
 	}
 	
-	public static void dataUpdate(Object oldValue,Object newvalue, String colName,String colOneName){
+	public static void dataUpdate(int oldValue,Object newvalue,Object colName){
 		Configuration cfg = new Configuration();
 		cfg.configure("hibernate.cfg.xml");
 		SessionFactory sfact = cfg.buildSessionFactory();
@@ -292,9 +177,9 @@ class UpdateScreen extends JFrame{
 		
 		try{
 			System.out.println("begin");
-			Query qry = session.createQuery("update Student set "+colName+"=:newVal WHERE "+colOneName+" =:oldVal");
+			Query qry = session.createQuery("update Student set "+colName+"=:newVal where id =:java4s");
 			qry.setParameter("newVal",newvalue);
-			qry.setParameter("oldVal",oldValue);
+			qry.setParameter("java4s",oldValue);
 			int res = qry.executeUpdate();
 			System.out.println("end");
 			
@@ -304,11 +189,13 @@ class UpdateScreen extends JFrame{
 				JOptionPane.showMessageDialog(new JFrame(),"No Matching Record Found.");
 			}
 			
-			
-			oldvalueField.setText("");
-			cb.setSelectedIndex(0);
 			cbOne.setSelectedIndex(0);
+			oldvalueField.setText("");
 			newvalueField.setText("");
+			
+			
+		}catch(NullPointerException e){
+			
 		}catch(Exception e){
 			System.out.println(e);
 		}finally{
