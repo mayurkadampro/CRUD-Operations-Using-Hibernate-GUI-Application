@@ -5,7 +5,8 @@
   
  <hibernate-mapping>  
   <class name="p1.Student" table="student_new">  
-    <id name="rno">  
+    <id name="rno">
+		<generator class="assigned"></generator> 
     </id>
      <property name="name"></property> 
 	 <property name="age"></property>

@@ -6,6 +6,7 @@ import javax.swing.border.*;
 import java.util.*;
 import org.hibernate.*;
 import org.hibernate.cfg.*;
+import org.hibernate.exception.ConstraintViolationException;
 
 class AddScreen extends JFrame
 {
@@ -155,8 +156,10 @@ class AddScreen extends JFrame
 						rollField.setText("");
 						ageField.setText("");
 						group.clearSelection();
-						
+					}catch(ConstraintViolationException e){
+						JOptionPane.showMessageDialog(c,"Entered roll no is already assign.");
 					}catch(Exception e){
+						System.out.println(e);
 						if (t!=null) t.rollback();
 					}finally{
 						session.flush();
