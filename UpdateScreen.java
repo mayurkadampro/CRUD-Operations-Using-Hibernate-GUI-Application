@@ -184,7 +184,7 @@ class UpdateScreen extends JFrame{
 			System.out.println("end");
 			
 			if(res>0){
-				JOptionPane.showMessageDialog(new JFrame(),"Numer of records effected due to delete query "+res);
+				JOptionPane.showMessageDialog(new JFrame(),"Numer of records effected due to update query "+res);
 			}else{
 				JOptionPane.showMessageDialog(new JFrame(),"No Matching Record Found.");
 			}
